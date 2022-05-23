@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/home/food_page_body.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/small_text.dart';
 
@@ -18,7 +19,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
       children: [
         Container(
           child: Container(
-            margin: EdgeInsets.only(top: 80, bottom: 15),
+            margin: EdgeInsets.only(top: 30, bottom: 15),
             padding: EdgeInsets.only(left: 25, right: 25),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,7 +51,8 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ],
             ),
           ),
-        )
+        ),
+        FoodPageBody()
       ],
     ));
   }

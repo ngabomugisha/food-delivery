@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/home/food_page_body.dart';
+import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/small_text.dart';
 
@@ -19,8 +20,10 @@ class _MainFoodPageState extends State<MainFoodPage> {
       children: [
         Container(
           child: Container(
-            margin: EdgeInsets.only(top: 30, bottom: 15),
-            padding: EdgeInsets.only(left: 25, right: 25),
+            margin: EdgeInsets.only(
+                top: Dimensions.height40, bottom: Dimensions.height40),
+            padding: EdgeInsets.only(
+                left: Dimensions.width30, right: Dimensions.width30),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -28,23 +31,23 @@ class _MainFoodPageState extends State<MainFoodPage> {
                   children: [
                     BigText(text: "Country"),
                     Row(
-                      children:[
+                      children: [
                         SmallText(text: "City"),
                         Icon(Icons.arrow_drop_down_rounded)
                       ],
                     ),
-
                   ],
                 ),
                 Container(
-                  width: 45,
-                  height: 45,
+                  width: Dimensions.height40,
+                  height: Dimensions.height40,
                   child: Icon(
                     Icons.search,
-                    color: Colors.white,
+                    color: Colors.red,
+                    size: Dimensions.iconSize24,
                   ),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(Dimensions.radius10),
                     color: Colors.blue,
                   ),
                 )
@@ -52,7 +55,9 @@ class _MainFoodPageState extends State<MainFoodPage> {
             ),
           ),
         ),
-        FoodPageBody()
+        Expanded(child: SingleChildScrollView(
+          child: FoodPageBody(),
+        ))
       ],
     ));
   }

@@ -6,10 +6,13 @@ class SmallText extends StatelessWidget {
   Color? color;
   final String text;
   double size;
+  double height;
+
   SmallText({
     Key? key,
     this.color = const Color(0xFF564F4D),
     required this.text,
+    this.height = 1.2,
     this.size = 12,
   }) : super(key: key);
 
@@ -21,6 +24,7 @@ class SmallText extends StatelessWidget {
         fontFamily: 'Roboto',
         color: color,
         fontSize: size,
+        height: height,
       ),
     );
   }

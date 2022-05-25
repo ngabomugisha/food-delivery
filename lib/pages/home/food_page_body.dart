@@ -4,6 +4,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:food_delivery/utils/dimensions.dart';
+import 'package:food_delivery/widgets/app_column.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/icons_text_widget.dart';
 import 'package:food_delivery/widgets/small_text.dart';
@@ -58,61 +59,122 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 borderRadius: BorderRadius.circular(5.0)),
           ),
         ),
-        SizedBox(height: Dimensions.height10,),
+        SizedBox(
+          height: Dimensions.height10,
+        ),
         Container(
           margin: EdgeInsets.only(left: Dimensions.width30),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               BigText(text: "Popular"),
-              SizedBox(width: Dimensions.width10,),
+              SizedBox(
+                width: Dimensions.width10,
+              ),
               Container(
                 margin: const EdgeInsets.only(bottom: 2),
-                child: BigText(text: '.',color: Colors.black38,),
+                child: BigText(
+                  text: '.',
+                  color: Colors.black38,
+                ),
               ),
-              SizedBox(width: Dimensions.width10,),
+              SizedBox(
+                width: Dimensions.width10,
+              ),
               Container(
-                child:
-                SmallText(text: "Food pairing"),
+                child: SmallText(text: "Food pairing"),
               )
             ],
           ),
         ),
         //list of food
-        SizedBox(height: Dimensions.height20,),
-        Container(
-          height: 600,
-          child: ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              itemCount:10,
-              itemBuilder: (context,index){
-                return Container(
-                  margin: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20),
-                  child: Row(
-                    children: [
-                      //image view
-                      Container(
-                        width: 120,
-                        margin: EdgeInsets.only(bottom: Dimensions.height10),
-                        height: 120,
+        SizedBox(
+          height: Dimensions.height20,
+        ),
+        ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return Container(
+                margin: EdgeInsets.only(
+                    left: Dimensions.width20, right: Dimensions.width20),
+                child: Row(
+                  children: [
+                    Container(
+                      width: Dimensions.listViewImgSize,
+                      margin: EdgeInsets.only(bottom: Dimensions.height10),
+                      height: Dimensions.listViewImgSize,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.circular(Dimensions.radius20),
+                          color: Colors.red,
+                          image: DecorationImage(
+                              image: AssetImage("assets/img/food/food3.png"))),
+                    ),
+                    //side text
+                    Expanded(
+                      child: Container(
+                        height: Dimensions.listViewtextContsize,
+                        padding: EdgeInsets.only(
+                            left: Dimensions.width5, right: Dimensions.width5),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(Dimensions.radius20),
-                            color: Colors.red,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                                image: AssetImage(
-                                    "assets/imf/food/food1.png"
-                                )
-                            )
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(Dimensions.radius20),
+                              bottomRight:
+                                  Radius.circular(Dimensions.radius20)),
+                          color: Colors.white,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 0, right: 0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              BigText(text: "Nutritious fruit meal in china"),
+                              SizedBox(
+                                height: Dimensions.height10,
+                              ),
+                              SmallText(text: "What you need is great"),
+                              SizedBox(
+                                height: Dimensions.height10,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  IconTextWidget(
+                                      icon: Icons.circle,
+                                      text: "Normal",
+                                      color: Colors.black45,
+                                      iconColor: Colors.redAccent),
+                                  // SizedBox(
+                                  //   width: Dimensions.width10,
+                                  // ),
+                                  IconTextWidget(
+                                      icon: Icons.location_on,
+                                      text: "1.7km",
+                                      color: Colors.black45,
+                                      iconColor: Colors.blueAccent),
+                                  // SizedBox(
+                                  //   width: Dimensions.width10,
+                                  // ),
+                                  IconTextWidget(
+                                      icon: Icons.access_time_rounded,
+                                      text: "32 min",
+                                      color: Colors.black45,
+                                      iconColor: Colors.red),
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
-
-                    ],
-                  )
-                  ,
-                );
-              }),
-        )
+                    )
+                  ],
+                ),
+              );
+            }),
       ],
     );
   }
@@ -183,67 +245,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     top: Dimensions.height15,
                     left: Dimensions.width15,
                     right: Dimensions.width15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    BigText(text: "text"),
-                    SizedBox(height: Dimensions.height20),
-                    Row(
-                      children: [
-                        Wrap(
-                          children: List.generate(
-                              5,
-                              (index) => Icon(
-                                    Icons.star,
-                                    color: Colors.amberAccent,
-                                    size: 15,
-                                  )),
-                        ),
-                        SizedBox(
-                          width: Dimensions.width10,
-                        ),
-                        SmallText(text: "4.5"),
-                        SizedBox(
-                          width: Dimensions.width10,
-                        ),
-                        SmallText(text: "1256"),
-                        SizedBox(
-                          width: Dimensions.width10,
-                        ),
-                        SmallText(text: "Comments")
-                      ],
-                    ),
-                    SizedBox(
-                      height: Dimensions.height20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconTextWidget(
-                            icon: Icons.circle,
-                            text: "Normal",
-                            color: Colors.black45,
-                            iconColor: Colors.redAccent),
-                        SizedBox(
-                          width: Dimensions.width15,
-                        ),
-                        IconTextWidget(
-                            icon: Icons.location_on,
-                            text: "1.7km",
-                            color: Colors.black45,
-                            iconColor: Colors.blueAccent),
-                        SizedBox(
-                          width: Dimensions.width15,
-                        ),
-                        IconTextWidget(
-                            icon: Icons.access_time_rounded,
-                            text: "32 min",
-                            color: Colors.black45,
-                            iconColor: Colors.red),
-                      ],
-                    )
-                  ],
-                ),
+                child: AppColumn(text: "vegetable"),
               ),
             ),
           )
